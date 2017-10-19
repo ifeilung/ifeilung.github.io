@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/10 | 向往</title>
+  <title>算法导论之插入排序 | 向往</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="向往">
-<meta property="og:url" content="http://yoursite.com/archives/2017/10/index.html">
+  <meta name="description" content="排序问题输入： n个数的一个序列&amp;lt; A1，A2 , … , An &amp;gt;。输出： 序列的一个排列&amp;lt; A1’ , A2’ , … , An’ &amp;gt;, 满足A1’ &amp;lt;= A2’ &amp;lt;= … &amp;lt;= An’  , 或者 A1’&amp;gt;= A2’ &amp;gt;= … &amp;gt;= An’ 。 插入排序1. 原理简述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论之插入排序">
+<meta property="og:url" content="http://yoursite.com/2017/09/14/算法导论之插入排序/index.html">
 <meta property="og:site_name" content="向往">
+<meta property="og:description" content="排序问题输入： n个数的一个序列&amp;lt; A1，A2 , … , An &amp;gt;。输出： 序列的一个排列&amp;lt; A1’ , A2’ , … , An’ &amp;gt;, 满足A1’ &amp;lt;= A2’ &amp;lt;= … &amp;lt;= An’  , 或者 A1’&amp;gt;= A2’ &amp;gt;= … &amp;gt;= An’ 。 插入排序1. 原理简述">
+<meta property="og:image" content="http://img.blog.csdn.net/20170726194112111?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzA1MjY1NA==/font/5a6L5L2T/fontsize/50/fill/I0JBQkFCMA==/dissolve/20/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170726203458739?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzA1MjY1NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-10-18T22:42:05.374Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="向往">
+<meta name="twitter:title" content="算法导论之插入排序">
+<meta name="twitter:description" content="排序问题输入： n个数的一个序列&amp;lt; A1，A2 , … , An &amp;gt;。输出： 序列的一个排列&amp;lt; A1’ , A2’ , … , An’ &amp;gt;, 满足A1’ &amp;lt;= A2’ &amp;lt;= … &amp;lt;= An’  , 或者 A1’&amp;gt;= A2’ &amp;gt;= … &amp;gt;= An’ 。 插入排序1. 原理简述">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170726194112111?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzA1MjY1NA==/font/5a6L5L2T/fontsize/50/fill/I0JBQkFCMA==/dissolve/20/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="向往" type="application/atom+xml">
   
@@ -147,103 +154,204 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-算法导论之插入排序" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      算法导论之插入排序
+    </h1>
+  
+
+        
+        <a href="/2017/09/14/算法导论之插入排序/" class="archive-article-date">
+  	<time datetime="2017-09-14T15:39:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-14</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="排序问题"><a href="#排序问题" class="headerlink" title="排序问题"></a><strong>排序问题</strong></h3><p><strong>输入：</strong> n个数的一个序列&lt; A1，A2 , … , An &gt;。<br><strong>输出：</strong> 序列的一个排列&lt; A1’ , A2’ , … , An’ &gt;, 满足A1’ &lt;= A2’ &lt;= … &lt;= An’  , 或者 A1’&gt;= A2’ &gt;= … &gt;= An’ 。</p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a><strong>插入排序</strong></h3><h3 id="1-原理简述"><a href="#1-原理简述" class="headerlink" title="1. 原理简述"></a>1. 原理简述</h3><a id="more"></a>
+<p><img src="http://img.blog.csdn.net/20170726194112111?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzA1MjY1NA==/font/5a6L5L2T/fontsize/50/fill/I0JBQkFCMA==/dissolve/20/gravity/SouthEast" alt="使用插入排序来排序手中的扑克牌"></p>
+<ul>
+<li>在未排序的数中取出一个数（从乱糟糟的牌堆里拿出一张牌）</li>
+<li>将它插入到已经排好序的子集的正确位置中（将它插入手中已经排好顺序的牌中，得到新的排好顺序的牌）</li>
+<li>再取出一个数，将它插入到正确位置（再从乱糟糟的牌堆里拿出一张牌）</li>
+<li>依次类推，直到序列里所有的数都插入到正确的位置。</li>
+</ul>
+<h3 id="2-伪代码"><a href="#2-伪代码" class="headerlink" title="2. 伪代码"></a>2. 伪代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">INSERTION_SORT(A)</div><div class="line"></div><div class="line">    for j = 2 to A.length </div><div class="line">        key = A[j]</div><div class="line">        //insert A[j] into the sorted sequence A[0...j-1]</div><div class="line">        i = j-1</div><div class="line">        while i &gt; 0 and A[i] &gt; key</div><div class="line">          A[i+1] = A[i]</div><div class="line">          i = i-1</div><div class="line">        A[i+1] = key</div></pre></td></tr></table></figure>
+<h3 id="3-理解伪代码"><a href="#3-理解伪代码" class="headerlink" title="3. 理解伪代码"></a>3. 理解伪代码</h3><ul>
+<li>假设数组下标从<strong>1</strong> 开始，数组总共有<strong>n</strong>个数。</li>
+<li>排序方式是 <strong>升序排序</strong></li>
+<li>对于序列中的第2至最后一个数，我们从取出第j个数（<strong>j 从 2 到 n</strong>），将其保存在一个 <strong>key</strong> 临时变量中，这样，第j个位置就<strong>‘空’了出来</strong>。</li>
+<li>对于<strong>A[0…j-1]</strong>， 最开始时是[ A1 ]， 只有一个数，所以它必定是排好序的。</li>
+<li>从第 j-1 到 第1 个数，依次和 <strong>key</strong> 比较，如果大于<strong>key</strong> ,那就把它搬到右边的位置。</li>
+<li>当不再有 大于key 的数时，空出来的位置刚好是最适合<strong>key</strong>的，将<strong>key</strong> 插进去，便得到一个新的<strong>排好顺序</strong>的序列。</li>
+<li><p>循环执行以上步骤，直到将第n 个数插入到正确的位置。</p>
+</li>
+<li><p>对于 <strong>A[5，2，4，6，1，3]</strong> 的排序，过程如下图所示</p>
+</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20170726203458739?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzA1MjY1NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="4-C语言实现"><a href="#4-C语言实现" class="headerlink" title="4. C语言实现"></a>4. C语言实现</h3><p> <em>整型数的插入排序，输出结果可选择升序或降序</em></p>
+<ol>
+<li><strong>头文件， sort.h</strong></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __SORT_H__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __SORT_H__</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert_Sort_Integer</span><span class="params">(<span class="keyword">int</span> <span class="built_in">array</span>[], <span class="keyword">int</span> length, <span class="keyword">unsigned</span> <span class="keyword">char</span> isAscending)</span></span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<ol>
+<li><strong>C 文件， sort.c</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"sort.h"</span></span></div><div class="line"></div><div class="line"><span class="comment">/*  插入排序  */</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert_Sort_Integer</span><span class="params">(<span class="keyword">int</span> <span class="built_in">array</span>[], <span class="keyword">int</span> length, <span class="keyword">unsigned</span> <span class="keyword">char</span> isAscending)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line">	<span class="keyword">int</span> temp;</div><div class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>;i &lt; length; i++)</div><div class="line">	&#123;</div><div class="line">		temp = *(<span class="built_in">array</span> + i);</div><div class="line">		j = i - <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(isAscending)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; *(<span class="built_in">array</span> + j) &gt; temp)</div><div class="line">			&#123;</div><div class="line">				<span class="built_in">array</span>[j + <span class="number">1</span>] = <span class="built_in">array</span>[j];</div><div class="line">				j--;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> </div><div class="line">		&#123;</div><div class="line">			<span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; *(<span class="built_in">array</span> + j) &lt; temp)</div><div class="line">			&#123;</div><div class="line">				<span class="built_in">array</span>[j + <span class="number">1</span>] = <span class="built_in">array</span>[j];</div><div class="line">				j--;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		*(<span class="built_in">array</span> + j + <span class="number">1</span>) = temp;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><ul>
+<li>插入排序属于原址排序，时间复杂度是 O(n^2), 和冒泡排序一样，效率很低，较少使用。 </li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/14/UART简介/" class="archive-article-date">
-  	<time datetime="2017-10-14T14:09:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/14/UART简介/">UART简介</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/14/算法导论之插入排序/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/14/SPI串行外设接口/" class="archive-article-date">
-  	<time datetime="2017-10-14T14:08:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/10/14/IIC总线简介/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          IIC总线简介
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/14/SPI串行外设接口/">SPI串行外设接口</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/14/IIC总线简介/" class="archive-article-date">
-  	<time datetime="2017-10-14T13:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/14/IIC总线简介/">IIC总线简介</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -266,8 +374,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
